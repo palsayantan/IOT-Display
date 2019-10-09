@@ -2,8 +2,6 @@
 /**************************************************************************************
  
  ESP8266 NodeMCU WiFi Internet clock and weather station and with SSD1306 OLED display
- This is a free software with NO WARRANTY.
- http://simple-circuit.com/
  
 ***************************************************************************************/
  
@@ -20,7 +18,6 @@
 #include <ArduinoJson.h>        // JSON decoding library
  
 // Libraries for SSD1306 OLED display
-#include <SPI.h>
 #include <Wire.h>              // include wire library (for I2C devices such as the SSD1306 display)
 #include <Adafruit_GFX.h>      // include Adafruit graphics library
 #include <Adafruit_SSD1306.h>  // include Adafruit SSD1306 OLED display driver
@@ -32,20 +29,20 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
  
 // set Wi-Fi SSID and password
-const char *ssid     = "Sayantan";
-const char *password = "sayantan";
+const char *ssid     = "SSID";
+const char *password = "PASSWORD";
  
 WiFiUDP ntpUDP;
 // 'time.nist.gov' is used (default server) with +1 hour offset (3600 seconds) 60 seconds (60000 milliseconds) update interval
 NTPClient timeClient(ntpUDP, "time.nist.gov", 3600, 60000);
  
 // set location and API key
-String Location = "Basirhat, IN";
-String API_Key  = "602ed00549e101036851ecf421164d33";
+String Location = "KOLKATA, IN";
+String API_Key  = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
  
 void setup(void)
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   delay(1000);
 
   // by default, we'll generate the high voltage from the 3.3v line internally! (neat!)
